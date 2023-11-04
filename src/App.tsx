@@ -1,14 +1,15 @@
+import mailScannerRepo from "./mail_scanner_repo";
+
 function App() {
     const onClick = async () => {
-        const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
-
-        // TODO: Scrape email content from the page
-        chrome.scripting.executeScript({
-            target: { tabId: tab.id! },
-            func: () => {
-                alert('Hello, world!');
-            }
+        const res = await mailScannerRepo.scan({
+            from: "FROM",
+            subject: "SUBJECT",
+            body: "BODY",
+            links: ["links"]
         });
+
+        alert(res);
     };
 
     return (
