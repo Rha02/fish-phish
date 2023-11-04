@@ -1,6 +1,5 @@
 import React from "react";
-import NewGPTRepo from "./mail_scanner_repo/gpt_repo";
-import { MailPayload, MailScannerRepository, MailScannerResponse } from "./mail_scanner_repo/repository";
+import { mailScannerRepo, MailPayload, MailScannerResponse } from "./mail_scanner_repo";
 
 function App() {
     const [ mailScanResponse, setMailScanResponse ] = React.useState<MailScannerResponse | null>(null);
@@ -8,13 +7,10 @@ function App() {
 
     // Listen for messages from the chrome extension script
     chrome.runtime.onMessage.addListener(async (message: MailPayload) => {
-        const res = await mailScanner.scan(message);
+        const res = await mailScannerRepo.scan(message);
         setMailPayload(message);
         setMailScanResponse(res);
     });
-
-    // Initialize the mail scanner
-    const mailScanner: MailScannerRepository = NewGPTRepo();
 
     // On button click, scrape the page and send data to listener
     const onClick = async () => {
