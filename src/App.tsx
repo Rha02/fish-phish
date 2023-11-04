@@ -45,33 +45,35 @@ function App() {
 
     return (
         <>
-            <h1>FishPhish</h1>
             <div className="">
-                <button onClick={onClick}>
-                    My Button
-                </button>
-            </div>
-            <div>
-                { mailPayload &&
-                    <p>
-                        Sender Email: {mailPayload.senderEmail}
-                        <br />
-                        Sender Name: {mailPayload.senderName}
-                        <br />
-                        Subject: {mailPayload.subject}
-                        <br />
-                        Body: {mailPayload.body}
-                    </p>
-                }
-            </div>
-            <div>
-                { mailScanResponse &&
-                    <p>
-                        Score: {mailScanResponse.score}
-                        <br />
-                        Description: {mailScanResponse.description}
-                    </p>
-                }
+                <h1>FishPhish</h1>
+                <div className="">
+                    <button className="bg-blue-500 text-white" onClick={onClick}>
+                        My Button
+                    </button>
+                </div>
+                <div>
+                    {mailPayload &&
+                        <p>
+                            Sender Email: {mailPayload.senderEmail}
+                            <br />
+                            Sender Name: {mailPayload.senderName}
+                            <br />
+                            Subject: {mailPayload.subject}
+                            <br />
+                            Body: {mailPayload.body}
+                        </p>
+                    }
+                </div>
+                <div>
+                    {mailScanResponse &&
+                        <p>
+                            Score: {mailScanResponse.score}
+                            <br />
+                            Description: {mailScanResponse.description}
+                        </p>
+                    }
+                </div>
             </div>
         </>
     );
