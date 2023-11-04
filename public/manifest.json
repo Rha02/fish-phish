@@ -9,6 +9,6 @@
         "scripting"
     ],
     "host_permissions": [
-        "https://mail.google.com/mail/u/*"
+        "https://mail.google.com/mail/u/*/#inbox/*"
     ]
 }

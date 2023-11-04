@@ -1,8 +1,8 @@
 interface MailPayload {
-    from: string;
+    senderEmail: string;
+    senderName: string;
     subject: string;
     body: string;
-    links: string[];
 }
 
 interface MailScannerResponse {
