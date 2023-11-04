@@ -19,4 +19,4 @@ interface MailScannerRepository {
     scan(payload: MailPayload): Promise<MailScannerResponse>;
 }
 
-export default MailScannerRepository;
+export type { MailPayload, MailScannerResponse, MailScannerRepository};

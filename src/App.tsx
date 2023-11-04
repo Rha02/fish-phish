@@ -1,15 +1,33 @@
-import mailScannerRepo from "./mail_scanner_repo";
+import React from "react";
+import NewGPTRepo from "./mail_scanner_repo/gpt_repo";
+import { MailPayload, MailScannerRepository, MailScannerResponse } from "./mail_scanner_repo/repository";
 
 function App() {
-    const onClick = async () => {
-        const res = await mailScannerRepo.scan({
-            from: "FROM",
-            subject: "SUBJECT",
-            body: "BODY",
-            links: ["links"]
-        });
+    const [ mailScanResponse, setMailScanResponse ] = React.useState<MailScannerResponse | null>(null);
 
-        alert(res);
+    chrome.runtime.onMessage.addListener(async (message: MailPayload) => {
+        const res = await mailScanner.scan(message);
+        setMailScanResponse(res);
+    });
+
+    const mailScanner: MailScannerRepository = NewGPTRepo();
+
+    const onClick = async () => {
+        const [ tab ] = await chrome.tabs.query({ active: true, currentWindow: true });
+
+        // Scrape the page
+        chrome.scripting.executeScript({
+            target: { tabId: tab.id! },
+            func: () => {
+                const data: MailPayload = {
+                    from: "FROM",
+                    subject: "SUBJECT",
+                    body: "BODY",
+                    links: ["LINK1", "LINK2"]
+                };
+                chrome.runtime.sendMessage(data);
+            },
+        });
     };
 
     return (
@@ -19,6 +37,15 @@ function App() {
                 <button onClick={onClick}>
                     My Button
                 </button>
+            </div>
+            <div>
+                { mailScanResponse &&
+                    <p>
+                        Score: {mailScanResponse.score}
+                        <br />
+                        Description: {mailScanResponse.description}
+                    </p>
+                }
             </div>
         </>
     );

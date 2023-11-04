@@ -1,9 +1,8 @@
-import MailScannerRepository from "./repository";
+import { MailPayload, MailScannerRepository } from "./repository";
 
 const NewGPTRepo = (): MailScannerRepository => {
     return {
-        scan: async (payload) => {
-            console.log(payload);
+        scan: async (payload: MailPayload) => {
             return {
                 score: 0.5,
                 description: payload.body
