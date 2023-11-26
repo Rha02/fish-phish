@@ -1,11 +1,12 @@
 import React from "react";
 import { useEffect } from "react";
 import { mailScannerRepo, MailPayload, MailScannerResponse } from "./mail_scanner_repo";
-import { Mail, Loader } from "./components";
+import { Mail, Loader, Error } from "./components";
 
 function App() {
     const [ mailScanResponse, setMailScanResponse ] = React.useState<MailScannerResponse | null>(null);
     const [isLoading, setLoading] = React.useState<boolean>(false);
+    const [error, setError] = React.useState<boolean>(false);
 
     // 1 second loading delay
     const delay = 1000;
@@ -16,9 +17,15 @@ function App() {
             if(isLoading) {
                 // Listen for messages from the chrome extension script
                 chrome.runtime.onMessage.addListener(async (message: MailPayload) => {
-                    const res = await mailScannerRepo.scan(message);
-                    setMailScanResponse(res);
-                    setLoading(false);
+                    try {
+                        const res = await mailScannerRepo.scan(message);
+                        setMailScanResponse(res);
+                        setLoading(false);
+                        setError(false);
+                    } catch (error) {
+                        setError(true);
+                        setLoading(false);
+                    }
                 });
             }
         };
@@ -105,8 +112,11 @@ function App() {
             {/* Mail Response */}
             {mailScanResponse ? <Mail score={mailScanResponse.score} description={description} /> : null}
 
+            {/* Error component */}
+            {!isLoading && !mailScanResponse && error ? <Error /> : null}
+
             {/* Empty Div */}
-            {!isLoading && !mailScanResponse ? (
+            {!isLoading && !mailScanResponse && !error ? (
                 <div className="h-[150px] w-full flex items-center justify-center">
                     <p className="h-fit w-[150px] font-medium text-base text-center">
                         Click the button below to scan your email
