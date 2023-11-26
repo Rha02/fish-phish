@@ -62,7 +62,7 @@ function App() {
         }, delay);
     };
 
-    const description = `Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. In ante metus dictum at tempor commodo ullamcorper a. Proin libero nunc consequat interdum varius sit amet mattis. Sit amet venenatis urna cursus eget nunc scelerisque viverra. At volutpat diam ut venenatis tellus in metus vulputate. Quis ipsum suspendisse ultrices gravida dictum fusce. Enim diam vulputate ut pharetra sit amet aliquam.
+    const description = `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. In ante metus dictum at tempor commodo ullamcorper a. Proin libero nunc consequat interdum varius sit amet mattis. Sit amet venenatis urna cursus eget nunc scelerisque viverra. At volutpat diam ut venenatis tellus in metus vulputate. Quis ipsum suspendisse ultrices gravida dictum fusce. Enim diam vulputate ut pharetra sit amet aliquam.
     Feugiat sed lectus vestibulum mattis ullamcorper velit. Curabitur gravida arcu ac tortor dignissim convallis aenean et. 
     Dolor sit amet consectetur adipiscing elit. Tristique nulla aliquet enim tortor at. Eget mi proin sed libero. Etiam erat
     velit scelerisque in dictum non consectetur. Enim lobortis scelerisque fermentum dui. Neque ornare aenean euismod 
@@ -92,8 +92,8 @@ function App() {
         // Pop Up Caontainer 
         <div className="bg-white h-fit w-[300px] flex flex-col mx-0 my-0">
             {/* Title Container */}
-            <div className="bg-white h-[50px] w-full flex border-b-[1px] border-b-gray-300">
-                <p className="font-bold text-blue-800 text-lg mx-auto my-auto">
+            <div className="bg-blue-700 h-[50px] w-full flex border-b-[1px] border-b-gray-300">
+                <p className="font-bold text-white text-lg mx-auto my-auto">
                     FishPhish
                 </p>
             </div>
@@ -107,7 +107,11 @@ function App() {
 
             {/* Empty Div */}
             {!isLoading && !mailScanResponse ? (
-                <div className="h-[150px] w-full"></div>
+                <div className="h-[150px] w-full flex items-center justify-center">
+                    <p className="h-fit w-[150px] font-medium text-base text-center">
+                        Click the button below to scan your email
+                    </p>
+                </div>
             ) : null}
 
             

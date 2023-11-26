@@ -4,7 +4,7 @@ const NewGPTRepo = (): MailScannerRepository => {
     return {
         scan: async (payload: MailPayload) => {
             return {
-                score: 0.5,
+                score: 100,
                 description: payload.body   
             };
         }
