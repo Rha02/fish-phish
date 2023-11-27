@@ -69,32 +69,6 @@ function App() {
         }, delay);
     };
 
-    const description = `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. In ante metus dictum at tempor commodo ullamcorper a. Proin libero nunc consequat interdum varius sit amet mattis. Sit amet venenatis urna cursus eget nunc scelerisque viverra. At volutpat diam ut venenatis tellus in metus vulputate. Quis ipsum suspendisse ultrices gravida dictum fusce. Enim diam vulputate ut pharetra sit amet aliquam.
-    Feugiat sed lectus vestibulum mattis ullamcorper velit. Curabitur gravida arcu ac tortor dignissim convallis aenean et. 
-    Dolor sit amet consectetur adipiscing elit. Tristique nulla aliquet enim tortor at. Eget mi proin sed libero. Etiam erat
-    velit scelerisque in dictum non consectetur. Enim lobortis scelerisque fermentum dui. Neque ornare aenean euismod 
-    elementum nisi quis. Quis lectus nulla at volutpat diam ut venenatis. Adipiscing diam donec adipiscing tristique risus 
-    nec feugiat. Et magnis dis parturient montes nascetur ridiculus mus mauris vitae. Et sollicitudin ac orci phasellus. 
-    Rhoncus dolor purus non enim praesent elementum facilisis leo vel. Nunc sed blandit libero volutpat. Viverra ipsum nunc 
-    aliquet bibendum enim facilisis gravida neque. Cursus mattis molestie a iaculis at erat. Hac habitasse platea dictumst 
-    quisque. Enim ut sem viverra aliquet eget sit amet. Nunc consequat interdum varius sit amet mattis vulputate enim. Etiam 
-    sit amet nisl purus in mollis nunc sed. Augue eget arcu dictum varius duis at consectetur. Mattis ullamcorper velit sed 
-    ullamcorper morbi tincidunt ornare massa. Sed velit dignissim sodales ut eu sem. Rhoncus est pellentesque elit 
-    ullamcorper. Rhoncus urna neque viverra justo nec ultrices dui sapien. Blandit aliquam etiam erat velit scelerisque. 
-    Egestas pretium aenean pharetra magna ac. Vitae aliquet nec ullamcorper sit amet risus. Enim eu turpis egestas pretium 
-    aenean pharetra. Sapien faucibus et molestie ac feugiat. A cras semper auctor neque. Platea dictumst vestibulum rhoncus 
-    est. Accumsan lacus vel facilisis volutpat est velit egestas dui id. Sed blandit libero volutpat sed cras ornare arcu dui.
-    Volutpat sed cras ornare arcu dui vivamus arcu felis. Nec feugiat in fermentum posuere urna nec tincidunt praesent. Viverra
-    accumsan in nisl nisi. Eget aliquet nibh praesent tristique magna. Eu scelerisque felis imperdiet proin fermentum. Ac 
-    ut consequat semper viverra nam libero justo laoreet. Auctor eu augue ut lectus arcu bibendum at. Parturient montes 
-    nascetur ridiculus mus mauris vitae. Mauris cursus mattis molestie a iaculis at erat pellentesque. Dis parturient 
-    montes nascetur ridiculus mus mauris vitae. Hendrerit gravida rutrum quisque non tellus orci ac auctor augue. In vitae 
-    turpis massa sed elementum tempus egestas sed sed. Felis donec et odio pellentesque diam volutpat commodo. Tellus in 
-    metus vulputate eu scelerisque. Tincidunt praesent semper feugiat nibh sed pulvinar. Semper eget duis at tellus at 
-    urna condimentum mattis. Consectetur lorem donec massa sapien faucibus et. Justo donec enim diam vulputate ut pharetra 
-    sit. Morbi leo urna molestie at elementum eu. Gravida in fermentum et sollicitudin ac. Id faucibus nisl tincidunt eget 
-    nullam non.`;
-
     return (
         // Pop Up Caontainer 
         <div className="bg-white h-fit w-[300px] flex flex-col mx-0 my-0">
@@ -110,7 +84,7 @@ function App() {
             {isLoading ? <Loader /> : null}
 
             {/* Mail Response */}
-            {mailScanResponse ? <Mail score={mailScanResponse.score} description={description} /> : null}
+            {mailScanResponse ? <Mail score={mailScanResponse.score} description={mailScanResponse.description} /> : null}
 
             {/* Error component */}
             {!isLoading && !mailScanResponse && error ? <Error /> : null}
